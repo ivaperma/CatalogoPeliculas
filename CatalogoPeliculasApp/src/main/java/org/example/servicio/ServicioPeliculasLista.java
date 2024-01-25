@@ -29,6 +29,19 @@ public class ServicioPeliculasLista implements IServicioPeliculas {
     @Override
     public void buscarPelicula(Pelicula pelicula) {
         var indice = peliculas.indexOf(pelicula);
-        System.out.println("Pelicula encontrada en el índice: " + indice);
+        if (indice == -1)
+            System.out.println("No se encontró la película: " + pelicula);
+        else
+            System.out.println("Pelicula encontrada en el índice: " + indice);
+    }
+
+    public static void main(String[] args) {
+        var pelicula1 = new Pelicula("Batman");
+        var pelicula2 = new Pelicula("Superman");
+        IServicioPeliculas servicioPeliculas = new ServicioPeliculasLista();
+        servicioPeliculas.agregarPelicula(pelicula1);
+        servicioPeliculas.agregarPelicula(pelicula2);
+
+        servicioPeliculas.listarPeliculas();
     }
 }
