@@ -2,6 +2,7 @@ package org.example.presentacion;
 
 import org.example.dominio.Pelicula;
 import org.example.servicio.IServicioPeliculas;
+import org.example.servicio.ServicioPeliculasArchivo;
 import org.example.servicio.ServicioPeliculasLista;
 
 import java.util.Scanner;
@@ -11,7 +12,8 @@ public class CatalogoPeliculasApp {
         var salir = false;
         var consola = new Scanner(System.in);
         // Añadimos la implementación del servicio
-        IServicioPeliculas servicioPeliculas = new ServicioPeliculasLista();
+        //IServicioPeliculas servicioPeliculas = new ServicioPeliculasLista();
+        IServicioPeliculas servicioPeliculas = new ServicioPeliculasArchivo();
         while (!salir) {
             try {
                 mostrarMenu();
@@ -24,12 +26,13 @@ public class CatalogoPeliculasApp {
     }
 
     private static void mostrarMenu() {
-        System.out.println("""
+        System.out.print("""
                 *** Catálogo de películas ***
                 1. Agregar película
                 2. Listar películas
                 3. Buscar película
                 4. Salir
+                Elige una opción:
                 """);
     }
 
